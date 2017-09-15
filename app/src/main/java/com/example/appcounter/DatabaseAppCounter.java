@@ -118,12 +118,6 @@ public class DatabaseAppCounter {
         return appCountList;
     }
 
-
-
-
-
-
-
     static class DatabaseHelper extends SQLiteOpenHelper {
         public DatabaseHelper(Context context) {
             super(context, "AppCounter.db", null, 1);

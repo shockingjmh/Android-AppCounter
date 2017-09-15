@@ -1,5 +1,7 @@
 package com.example.appcounter;
 
+//전민호 구현
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;

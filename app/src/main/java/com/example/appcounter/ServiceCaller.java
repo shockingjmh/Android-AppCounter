@@ -67,7 +67,7 @@ public class ServiceCaller {
         sender = PendingIntent.getBroadcast(context, 0, intent, 0);
         am.cancel(sender);
         sender.cancel();
-        context.startService(new Intent(context, AppCounterService.class));
+        context.startService(new Intent(context, AppCounterService.class));//서비스 유지
     }
 
     public boolean isCall(Context context) {

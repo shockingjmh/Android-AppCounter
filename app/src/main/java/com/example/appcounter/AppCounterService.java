@@ -78,12 +78,12 @@ public class AppCounterService extends Service {
                     longitude = 0;
                     latitude = 0;
                 }
-
-                if(recentComponentName.contains("launcher") == false && recentComponentName.contains("appcounter") == false) {
+                //전민호 구현 시작
+                if(recentComponentName.contains("launcher") == false && recentComponentName.contains("appcounter") == false) {//앱을 선택할 경우 명칭, 위경도 서버로 전송
                     connnect.sendData(recentComponentName, longitude, latitude);
-                }else if(connnect.receiveData() != null){
+                }else if(connnect.receiveData() != null){//서버로부터 정제된 데이터 전송 받을 경우
                     Log.d(LOG_NAME, "connect.isRecvData------------------");
-                    alert_confirm.setTitle("Big Picture").setIcon(R.drawable.bg_main_icon)
+                    alert_confirm.setTitle("Big Picture").setIcon(R.drawable.bg_main_icon)//앱을 사용할 것인지 메시지 띄움
                             .setMessage(connnect.receiveData()).setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener(){
 
                         public void onClick(DialogInterface dialog, int which){
@@ -100,6 +100,7 @@ public class AppCounterService extends Service {
                     alert.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
                     alert.show();
                 }
+                //전민호 구현 완료
             }
         }
         return START_STICKY;
@@ -109,7 +110,7 @@ public class AppCounterService extends Service {
     public void onDestroy() {
         super.onDestroy();
         Log.d(LOG_NAME, "onDestroy()");
-        connnect.quit();
+        connnect.quit();// 연결 종료
     }
 
     @Override

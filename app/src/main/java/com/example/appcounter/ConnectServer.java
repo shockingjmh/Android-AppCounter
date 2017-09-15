@@ -20,6 +20,8 @@ import java.util.Date;
  * Created by shockingjmh on 2017. 5. 13..
  */
 
+//전민호 구현
+
 public class ConnectServer extends Thread{
 
     private static final String LOG_NAME = "";
@@ -54,7 +56,7 @@ public class ConnectServer extends Thread{
 
             recv = true;
             while((recv_data = reader.readLine()) != null){
-                Log.d(LOG_NAME, recv_data + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Log.d(LOG_NAME, recv_data + "!!!");
             }
         }catch(Exception e){
             Log.d(LOG_NAME, "호스트를 찾을 수 없습니다.");
@@ -81,12 +83,12 @@ public class ConnectServer extends Thread{
         }
     };*/
 
-    public void sendData(String data, double latitude, double longitude){
+    public void sendData(String data, double latitude, double longitude){//데이터 전송 메소드
 
         theLine += data;
-        theLine += "/";
+        theLine += "/";//데이터 구분자
         theLine += Double.toString(latitude);
-        theLine += "/";
+        theLine += "/";//데이터 구분자
         theLine += Double.toString(longitude);
 
         if(writer != null && theLine.compareTo("") != 0) {
@@ -94,7 +96,7 @@ public class ConnectServer extends Thread{
                 writer.write(theLine + '\r' + '\n');
                 writer.flush(); // 서버에 데이터 전송
                 theLine = "";
-                Log.d(LOG_NAME, theLine+"sadfdsjklfjkl;dsjfkl;dsajfkl;asdjkl;fjsdal;fjadklsfkl;");
+                Log.d(LOG_NAME, theLine+"!!!");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -111,12 +113,12 @@ public class ConnectServer extends Thread{
         return false;
     }
 
-    public String receiveData(){
-        Log.d("name", recv_data+"333333333333333333333333333333333333333333333");
+    public String receiveData(){//데이터 전송 받았을때
+        Log.d("name", recv_data+"!!!");
         return recv_data;
     }
 
-    public void quit(){
+    public void quit(){//서버와 연결 종료
         try{
             theSocket.close(); // 소켓을 닫는다.
         }catch(IOException e){
